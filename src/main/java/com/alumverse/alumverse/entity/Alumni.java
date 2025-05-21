@@ -1,7 +1,5 @@
 package com.alumverse.alumverse.entity;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "alumni")
-public class Employee {
+public class Alumni {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
