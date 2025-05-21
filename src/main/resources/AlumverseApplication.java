@@ -8,13 +8,14 @@ import org.springframework.context.ApplicationContext;
 public class AlumverseApplication {
 
     public static void main(String[] args) {
+        SpringApplication.run(AlumverseApplication.class, args);
 
-        ApplicationContext context = SpringApplication.run(AlumverseApplication.class, args);
+/*        ApplicationContext context = SpringApplication.run(AlumverseApplication.class, args);
         var eventService = context.getBean(EventService.class);
         //        var orderService = new EventService(new OnlineEventService());
         eventService.register();
 //        var orderService1 = new EventService(new OfflineEventService());
-//        orderService1.register();
+//        orderService1.register();*/
     }
 
 }
