@@ -1,4 +1,7 @@
 package com.alumverse.alumverse.repository;
 
-public interface AlumniRepository {
+import com.alumverse.alumverse.entity.Alumni;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AlumniRepository extends JpaRepository<Alumni, Long> {
 }
