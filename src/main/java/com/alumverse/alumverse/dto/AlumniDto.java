@@ -11,8 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AlumniDto {
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String fullName;
     private String email;
+    private String password;
+    private String confirmPassword;
 
 }
