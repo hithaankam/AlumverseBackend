@@ -1,7 +1,8 @@
 package com.alumverse.alumverse.repository;
 
-import com.alumverse.alumverse.entity.Alumni;
+import com.alumverse.alumverse.model.Alumni;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface AlumniRepository extends JpaRepository<Alumni, Long> {
+public interface AlumniRepository extends MongoRepository<Alumni, Long> {
 }

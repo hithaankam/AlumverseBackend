@@ -1,7 +1,7 @@
 package com.alumverse.alumverse.service.impl;
 
 import com.alumverse.alumverse.dto.AlumniDto;
-import com.alumverse.alumverse.entity.Alumni;
+import com.alumverse.alumverse.model.Alumni;
 import com.alumverse.alumverse.exception.ResourceNotFoundException;
 import com.alumverse.alumverse.mapper.AlumniMapper;
 import com.alumverse.alumverse.repository.AlumniRepository;

@@ -1,7 +1,7 @@
 package com.alumverse.alumverse.mapper;
 
 import com.alumverse.alumverse.dto.AlumniDto;
-import com.alumverse.alumverse.entity.Alumni;
+import com.alumverse.alumverse.model.Alumni;
 
 public class AlumniMapper {
 
