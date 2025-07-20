@@ -76,4 +76,15 @@ public class AlumniServiceImpl implements AlumniService {
         }
         alumniRepository.deleteById(alumniId);
     }
+    @Override
+    public List<AlumniDto> searchAlumni(String query) {
+        List<Alumni> matchedAlumni = alumniRepository
+                .findByFullNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query);
+
+        return matchedAlumni.stream()
+                .map(AlumniMapper::mapToAlumniDto)
+                .collect(Collectors.toList());
+    }
+
+
 }

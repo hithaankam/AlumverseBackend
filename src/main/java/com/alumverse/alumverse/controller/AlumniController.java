@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/alumni")
@@ -48,4 +50,10 @@ public class AlumniController {
         return ResponseEntity.ok("Deleted Alumni with id " + id);
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<AlumniDto>> searchAlumni(@RequestParam String name) {
+        List<AlumniDto> currSearch = alumniService.searchAlumni(name);
+        return ResponseEntity.ok(currSearch);
+
+    }
 }

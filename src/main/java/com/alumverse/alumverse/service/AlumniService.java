@@ -10,4 +10,5 @@ public interface AlumniService {
     List<AlumniDto> getAllAlumni();
     AlumniDto updateAlumni(Long alumniId, AlumniDto updatedAlumni);
     void deleteAlumni(Long alumniId);
+    List<AlumniDto> searchAlumni(String name);
 }
