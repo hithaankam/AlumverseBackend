@@ -2,7 +2,7 @@ package com.alumverse.alumverse.mapper;
 
 import com.alumverse.alumverse.dto.AlumniDto;
 import com.alumverse.alumverse.model.Alumni;
-
+import org.bson.types.ObjectId;
 public class AlumniMapper {
 
     /**
@@ -14,6 +14,7 @@ public class AlumniMapper {
      */
     public static AlumniDto mapToAlumniDto(Alumni alumni){
         return new AlumniDto(
+
                 alumni.getId(),
                 alumni.getFullName(),
                 alumni.getEmail(),

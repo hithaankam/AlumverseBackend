@@ -11,7 +11,7 @@ import org.bson.types.ObjectId;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AlumniDto {
-    private ObjectId id;
+    private String id;
     private String fullName;
     private String email;
     private String password;

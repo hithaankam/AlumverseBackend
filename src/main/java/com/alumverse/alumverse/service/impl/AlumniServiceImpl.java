@@ -7,9 +7,9 @@ import com.alumverse.alumverse.mapper.AlumniMapper;
 import com.alumverse.alumverse.repository.AlumniRepository;
 import com.alumverse.alumverse.service.AlumniService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder; // Import PasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils; // Import for checking string content
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,10 +19,15 @@ import java.util.stream.Collectors;
 public class AlumniServiceImpl implements AlumniService {
 
     private final AlumniRepository alumniRepository;
-    private final PasswordEncoder passwordEncoder; // Inject PasswordEncoder for security
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public AlumniDto createAlumni(AlumniDto alumniDto) {
+        // Check if user already exists to prevent duplicates
+        alumniRepository.findByEmail(alumniDto.getEmail()).ifPresent(a -> {
+            throw new RuntimeException("User with email " + alumniDto.getEmail() + " already exists.");
+        });
+
         Alumni alumni = AlumniMapper.mapToAlumni(alumniDto);
 
         // Hash the password before saving the new alumni
@@ -34,7 +39,7 @@ public class AlumniServiceImpl implements AlumniService {
     }
 
     @Override
-    public AlumniDto getAlumniById(Long alumniId) {
+    public AlumniDto getAlumniById(String alumniId) { // CORRECT: Uses String
         Alumni alumni = alumniRepository.findById(alumniId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Alumni Not Found with Id: " + alumniId));
@@ -45,21 +50,20 @@ public class AlumniServiceImpl implements AlumniService {
     public List<AlumniDto> getAllAlumni() {
         List<Alumni> allAlumni = alumniRepository.findAll();
         return allAlumni.stream()
-                .map(AlumniMapper::mapToAlumniDto) // Using method reference for cleaner code
+                .map(AlumniMapper::mapToAlumniDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public AlumniDto updateAlumni(Long alumniId, AlumniDto alumniDto) {
+    public AlumniDto updateAlumni(String alumniId, AlumniDto alumniDto) { // CORRECT: Uses String
         Alumni alumni = alumniRepository.findById(alumniId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Alumni Not Found with Id: " + alumniId));
 
-        // Update fields from the DTO
         alumni.setFullName(alumniDto.getFullName());
         alumni.setEmail(alumniDto.getEmail());
 
-        // Only update the password if a new one is provided
+        // Only update password if a new one is provided in the DTO
         if (StringUtils.hasText(alumniDto.getPassword())) {
             alumni.setPassword(passwordEncoder.encode(alumniDto.getPassword()));
         }
@@ -69,15 +73,16 @@ public class AlumniServiceImpl implements AlumniService {
     }
 
     @Override
-    public void deleteAlumni(Long alumniId) {
-        // First, ensure the alumni exists before attempting to delete
+    public void deleteAlumni(String alumniId) { // CORRECT: Uses String
         if (!alumniRepository.existsById(alumniId)) {
             throw new ResourceNotFoundException("Alumni Not Found with Id: " + alumniId);
         }
         alumniRepository.deleteById(alumniId);
     }
+
     @Override
     public List<AlumniDto> searchAlumni(String query) {
+        // The repository method name is long, but it's descriptive
         List<Alumni> matchedAlumni = alumniRepository
                 .findByFullNameContainingIgnoreCaseOrEmailContainingIgnoreCase(query, query);
 
@@ -85,6 +90,4 @@ public class AlumniServiceImpl implements AlumniService {
                 .map(AlumniMapper::mapToAlumniDto)
                 .collect(Collectors.toList());
     }
-
-
 }

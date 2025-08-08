@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface AlumniService {
     AlumniDto createAlumni(AlumniDto alumnidto);
-    AlumniDto getAlumniById(Long alumniId);
+    AlumniDto getAlumniById(String alumniId);
     List<AlumniDto> getAllAlumni();
-    AlumniDto updateAlumni(Long alumniId, AlumniDto updatedAlumni);
-    void deleteAlumni(Long alumniId);
+    AlumniDto updateAlumni(String alumniId, AlumniDto updatedAlumni);
+    void deleteAlumni(String alumniId);
     List<AlumniDto> searchAlumni(String name);
 }
