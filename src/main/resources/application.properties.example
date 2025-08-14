@@ -1,0 +1,5 @@
+spring.application.name=alumverse
+spring.data.mongodb.uri=YOUR_MONGODB_ATLAS_CONNECTION_STRING
+
+
+
