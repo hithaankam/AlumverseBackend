@@ -55,6 +55,7 @@ public class AuthController {
         alumniDto.setEmail(registerDto.getEmail());
         alumniDto.setPassword(registerDto.getPassword());
 
+
         alumniService.createAlumni(alumniDto);
 
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
