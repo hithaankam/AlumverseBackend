@@ -33,4 +33,5 @@ public class Alumni {
     @Field("password")
     private String password; // This will store the hashed password
 
+
 }
