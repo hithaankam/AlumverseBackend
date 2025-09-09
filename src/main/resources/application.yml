@@ -1,0 +1,13 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: your-client-id
+            client-secret: your-client-secret
+            redirect-uri: "http://localhost:8081/oauth2/callback"
+          github:
+            client-id: your-client-id
+            client-secret: your-client-secret
+            redirect-uri: "http://localhost:8081/oauth2/callback"
