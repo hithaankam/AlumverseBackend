@@ -1,6 +1,6 @@
 package com.alumverse.alumverse.config;
 
-import com.alumverse.alumverse.service.CustomUserDetailsService;
+import com.alumverse.alumverse.service.impl.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

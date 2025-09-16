@@ -2,7 +2,7 @@ package com.alumverse.alumverse.config;
 
 
 
-import com.alumverse.alumverse.service.CustomUserDetailsService;
+import com.alumverse.alumverse.service.impl.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

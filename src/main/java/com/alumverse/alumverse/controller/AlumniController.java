@@ -1,10 +1,13 @@
 package com.alumverse.alumverse.controller;
 
+import com.alumverse.alumverse.config.CustomUserDetails;
 import com.alumverse.alumverse.dto.AlumniDto;
 import com.alumverse.alumverse.service.AlumniService;
+import com.alumverse.alumverse.service.impl.AlumniServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -67,4 +70,13 @@ public class AlumniController {
         List<AlumniDto> currSearch = alumniService.searchAlumni(name);
         return ResponseEntity.ok(currSearch);
     }
+
+    @GetMapping("/me")
+    public ResponseEntity<AlumniDto> getMe(@AuthenticationPrincipal CustomUserDetails userDetails) {
+        AlumniDto alumni = alumniService.getAlumniById(userDetails.getId());
+        return ResponseEntity.ok(alumni);
+    }
+
+
 }
+

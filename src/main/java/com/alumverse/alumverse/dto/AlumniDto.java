@@ -17,4 +17,11 @@ public class AlumniDto {
     private String password;
     private String confirmPassword;
 
+
+    public String getId(){
+        return this.id;
+    }
+    public String getFullName(){
+        return this.fullName;
+    }
 }

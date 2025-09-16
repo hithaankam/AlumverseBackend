@@ -34,4 +34,19 @@ public class Alumni {
     private String password; // This will store the hashed password
 
 
+    public String getId() {
+        return this.id;
+    }
+
+    public String getFullName() {
+        return this.fullName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
 }

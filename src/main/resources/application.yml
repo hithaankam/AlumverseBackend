@@ -4,10 +4,11 @@ spring:
       client:
         registration:
           google:
-            client-id: your-client-id
-            client-secret: your-client-secret
+            client-id: 13402870836-o1arackijl85ng02u971ate9c0l69um7.apps.googleusercontent.com
+            client-secret: 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
             redirect-uri: "http://localhost:8081/oauth2/callback"
           github:
             client-id: your-client-id
             client-secret: your-client-secret
             redirect-uri: "http://localhost:8081/oauth2/callback"
+

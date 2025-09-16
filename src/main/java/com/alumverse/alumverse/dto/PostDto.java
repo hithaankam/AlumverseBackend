@@ -19,4 +19,7 @@ public class PostDto {
     private int likesCount; //count
 
 
+    public void setAuthorId(String id) {
+        this.authorId = id;
+    }
 }

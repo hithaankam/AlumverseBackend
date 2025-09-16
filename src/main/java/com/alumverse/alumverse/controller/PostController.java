@@ -3,10 +3,12 @@ package com.alumverse.alumverse.controller;
 import java.util.List;
 
 
+import com.alumverse.alumverse.config.CustomUserDetails;
 import com.alumverse.alumverse.dto.PostDto;
 import com.alumverse.alumverse.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,7 +23,8 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto) {
+    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto, @AuthenticationPrincipal CustomUserDetails user) {
+        postDto.setAuthorId(user.getUsername());
         PostDto createdPost = postService.createPost(postDto);
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }
