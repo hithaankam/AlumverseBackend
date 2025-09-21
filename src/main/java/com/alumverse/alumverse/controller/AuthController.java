@@ -16,7 +16,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@CrossOrigin(origins = "https://alumverse.netlify.app")
+
 public class AuthController {
 
     @Autowired

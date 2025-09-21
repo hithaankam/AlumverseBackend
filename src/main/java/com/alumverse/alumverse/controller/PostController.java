@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/posts")
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://alumverse.netlify.app")
+
 public class PostController {
 
     private final PostService postService;

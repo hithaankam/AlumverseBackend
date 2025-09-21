@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*") // Allows requests from any frontend, useful for development
+@CrossOrigin(origins = "https://alumverse.netlify.app")
+// Allows requests from any frontend, useful for development
 @RestController
 @RequestMapping("/api/alumni")
 public class AlumniController {
